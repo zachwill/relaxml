@@ -24,7 +24,11 @@ def xml(data):
     if hasattr(data, 'read'):
         # Then it's a file.
         data = data.read()
-    results = converter.fromstring(data)
+    try:
+        results = converter.fromstring(data)
+    except:
+        string = str(data)
+        results = converter.fromstring(string)
     first_element = results.keys()[0]
     return results[first_element]
 
