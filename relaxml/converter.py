@@ -18,6 +18,10 @@ except ImportError:
         import xml.etree.ElementTree as etree
 
 
+# Global regex for XML namespaces.
+namespace = re.compile("\{(.*)\}(.*)")
+
+
 def xml(data):
     """Turn XML into a dictionary."""
     converter = XML2Dict()
@@ -69,7 +73,7 @@ class XML2Dict(object):
 
     def _namespace_split(self, tag, value):
         """Split namespace tags."""
-        result = re.compile("\{(.*)\}(.*)").search(tag)
+        result = namespace.search(tag)
         if result:
             tag = result.groups(1)
             # value.namespace, tag = result.groups()
