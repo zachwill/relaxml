@@ -26,7 +26,7 @@ Usage
 {'ohai': {'xml': 'data'}}
 
 >>> import requests as req
->>> content = req.get('http://lots.ofxml.com').text
+>>> content = req.get('http://lots.ofxml.org').text
 >>> xml(content)
 {'ohai': {'xml': 'data'}}
 ```
