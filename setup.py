@@ -10,7 +10,7 @@ except ImportError:
 
 setup(
     name="relaxml",
-    version="0.1",
+    version="0.1.1",
     url="http://github.com/zachwill/relaxml",
     author="Zach Williams",
     author_email="hey@zachwill.com",
