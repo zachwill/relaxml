@@ -14,7 +14,7 @@ setup(
     url="http://github.com/zachwill/relaxml",
     author="Zach Williams",
     author_email="hey@zachwill.com",
-    description="Converting XML to a dictionary should be easy.",
+    description="Converting XML to a dictionary should be easy -- and fast.",
     packages=[
         'relaxml'
     ],

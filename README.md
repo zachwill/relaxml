@@ -1,7 +1,7 @@
 relaxml
 =======
 
-Converting XML to a dictionary should be easy.
+Converting XML to a dictionary should be easy -- and fast.
 
 Most of the current XML to dict projects are either unmaintained, slow,
 or not well-tested. This shouldn't be the case.
