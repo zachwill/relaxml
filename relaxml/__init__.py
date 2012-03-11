@@ -1,1 +1,1 @@
-from .converter import xml
+from .converter import xml, XML2Dict

@@ -33,8 +33,7 @@ def xml(data):
     except:
         string = str(data)
         results = converter.fromstring(string)
-    first_element = results.keys()[0]
-    return results[first_element]
+    return results
 
 
 class XML2Dict(object):
