@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 
-"""
-Unit tests for the xml2dict module. Designed to be used with `nose` for
-running tests.
-
-    $ nosetests --with-coverage --cover-package=xml2dict
-"""
+"""Unit tests for the relaxml module."""
 
 import unittest
 import tempfile
