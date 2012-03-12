@@ -6,23 +6,31 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
+
+import requests as req
+from relaxml import xml
+from simplejson import dumps
+
 
 app = Flask(__name__)
-
-if 'SECRET_KEY' in os.environ:
-    app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
-else:
-    app.config['SECRET_KEY'] = 'this_should_be_configured'
 
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     """Render website's home page."""
     if request.method == 'POST':
-        data = request.data
-        return data
+        files = request.form.items()
+        try:
+            data = files[0][1]
+        except:
+            return 'No file received.'
+        try:
+            content = xml(data)
+        except Exception as error:
+            content = {"error": str(error)}
+        json = dumps(content)
+        return json
     return render_template('home.html')
 
 
