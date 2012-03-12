@@ -22,7 +22,8 @@ def home():
     if request.method == 'POST':
         files = request.form.items()
         try:
-            data = files[0][1]
+            # Not sure why Flask is splitting them apart?
+            data = '='.join(files[0])
         except:
             return 'No file received.'
         try:
@@ -30,6 +31,9 @@ def home():
         except Exception as error:
             content = {"error": str(error)}
         json = dumps(content)
+        if 'X-callback' in request.headers:
+            callback = request.headers['X-callback']
+            req.post(callback, data=json)
         return json
     return render_template('home.html')
 
