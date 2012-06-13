@@ -18,9 +18,6 @@ setup(
     packages=[
         'relaxml'
     ],
-    install_requires=[
-        'mock',
-    ],
     license='MIT',
     classifiers=[
         'Development Status :: 1 - Planning',
@@ -31,4 +28,5 @@ setup(
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
     ],
+    test_suite='test',
 )
