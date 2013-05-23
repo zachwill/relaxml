@@ -19,12 +19,12 @@ except ImportError:
 
 
 # Global regex for XML namespaces.
-namespace = re.compile("\{(.*)\}(.*)")
+NAMESPACE = re.compile("\{(.*)\}(.*)")
 
 
-def xml(data):
+def xml(data, namespace=False):
     """Turn XML into a dictionary."""
-    converter = XML2Dict()
+    converter = XML2Dict(namespace)
     if hasattr(data, 'read'):
         # Then it's a file.
         data = data.read()
@@ -38,6 +38,9 @@ def xml(data):
 
 class XML2Dict(object):
     """Turn XML into a dictionary data structure."""
+
+    def __init__(self, namespace=False):
+        self.namespace = namespace
 
     def _parse_node(self, node):
         node_tree = {}
@@ -72,10 +75,12 @@ class XML2Dict(object):
 
     def _namespace_split(self, tag, value):
         """Split namespace tags."""
-        result = namespace.search(tag)
+        result = NAMESPACE.search(tag)
         if result:
-            tag = result.groups(1)
-            # value.namespace, tag = result.groups()
+            if self.namespace:
+                tag = result.groups(1)
+            else:
+                tag = result.groups(1)[-1]
         return (tag, value)
 
     def parse(self, file):

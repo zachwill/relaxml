@@ -53,9 +53,9 @@ class TestXML2Dict(unittest.TestCase):
         </h:table>"""
         xml = self.xml + namespaces_table
         expected_output = {
-            ('http://www.w3.org/TR/html4/', 'table'): {
-                ('http://www.w3.org/TR/html4/', 'tr'): {
-                    ('http://www.w3.org/TR/html4/', 'td'): ['Apples', 'Bananas']
+            'table': {
+                'tr': {
+                    'td': ['Apples', 'Bananas']
                 }
             }
         }
